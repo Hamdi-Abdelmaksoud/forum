@@ -1,0 +1,1 @@
+INSERT INTO category(nom) VALUES("PHP"),("JS"),("HTML"),("BOOTSTRAP"),("CSS"),("SYMFONY"),("MYSQL"),("AUTRE")  
