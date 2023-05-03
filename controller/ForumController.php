@@ -27,7 +27,7 @@
         }
         public function topicDetail($id){
           
-
+            echo 'test';die;
            $topicManager = new TopicManager();
 
             return [
