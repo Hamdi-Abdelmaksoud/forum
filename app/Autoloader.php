@@ -1,13 +1,15 @@
 <?php
 	namespace App;
 	
-	class Autoloader{
-
-		public static function register(){
+	class Autoloader
+	{
+        public static function register()
+		{
 			spl_autoload_register(array(__CLASS__, 'autoload'));
 		}
 
-		public static function autoload($class){
+		public static function autoload($class)
+		{
 
 			//$class = Model\Managers\VehiculeManager (FullyQualifiedClassName)
 			//namespace = Model\Managers, nom de la classe = VehiculeManager

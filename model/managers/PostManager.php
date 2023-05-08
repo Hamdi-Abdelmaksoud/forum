@@ -23,7 +23,7 @@ public function findPostsByTopic($id)
         DAO::select($sql,['id'=>$id]),
         $this->className
     );
-
+ 
 }
 
-    }
+    }   

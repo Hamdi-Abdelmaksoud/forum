@@ -34,19 +34,19 @@
         }
 
         /**
-         * Get the value of title
+         * Get the value of NOm
          */ 
-        public function getTitle()
+        public function getNom()
         {
-                return $this->nom;
+                return  $this->nom;
         }
 
         /**
-         * Set the value of title
+         * Set the value of Nom
          *
          * @return  self
          */ 
-        public function setTitle($nom)
+        public function setNom($nom)
         {
                 $this->nom = $nom;
 
