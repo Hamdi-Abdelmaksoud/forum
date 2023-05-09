@@ -26,9 +26,8 @@ class ForumController extends AbstractController implements ControllerInterface
             ]
         ];
     }
-}
-class CategoryController extends AbstractController implements ControllerInterface
-{
+
+
     public function listCategories()
     {
         $categoryManager = new CategoryManager();
@@ -36,10 +35,10 @@ class CategoryController extends AbstractController implements ControllerInterfa
         return [
             "view" => VIEW_DIR . "forum/listCategories.php",
             "data" => [
-                "categories" => $categoryManager->findAll("id_category", "ASC")
+                "categories" => $categoryManager->findAll()
 
 
             ]
         ];
-    }
-}
+    
+}}

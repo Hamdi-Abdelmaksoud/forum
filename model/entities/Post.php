@@ -1,5 +1,5 @@
-<?php
-    namespace Model\Entities;
+ <?php
+ namespace Model\Entities;
 
     use App\Entity;
 
