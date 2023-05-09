@@ -10,7 +10,7 @@ foreach ($posts as $post) { ?>
 }
 ?>
 <form action="index.php?ctrl=forum&action=ajouterPost&id=<?= $_GET["id"] ?>" method="post">
-    <h3>commenter</h3>
+   
     <div>
         <textarea name="commentaire" id="commentaire" required></textarea>
         <input type="submit" value="ajouter commentaire" name="ajouterCom">
