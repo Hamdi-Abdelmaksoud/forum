@@ -1,7 +1,10 @@
- <?php
- namespace Model\Entities;
+<?php
+  namespace Model\Entities;
+ 
+ 
 
-    use App\Entity;
+ 
+use App\Entity;
 
     final class Post extends Entity{
 
@@ -39,7 +42,7 @@
             /**
              * Get the value of texte
              */ 
-            public function getTitle()
+            public function getTexte()
             {
                 return $this->texte;
             }
