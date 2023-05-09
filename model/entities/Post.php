@@ -16,7 +16,8 @@ use App\Entity;
        
 
         public function __construct($data){         
-            $this->hydrate($data);        
+            $this->hydrate($data);   
+           
         }
  
         /**
@@ -64,7 +65,8 @@ use App\Entity;
              */ 
             public function getPostDate()
             {
-                    return $this->postDate->format("d/m/Y, H:i:s");
+                    $dateNow=$this->postDate->format("d/m/Y, H:i:s");
+                    return $dateNow;
             }
     
             /**
@@ -72,11 +74,11 @@ use App\Entity;
              *
              * @return  self
              */ 
-            public function setPostDate($postDate)
+             public function setPostDate($postDate)
             {
                     $this->postDate =  new \DateTime($postDate);
     
-                    return $this;
+             return $this;
             }
             /**
 

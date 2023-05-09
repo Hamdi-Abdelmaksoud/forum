@@ -46,13 +46,32 @@ class ForumController extends AbstractController implements ControllerInterface
     public function listPostsTopic()
     {
         $post=new PostManager();
-        $topic= new TopicManager();
+        $topic=new topicManager();
+     
         $id=filter_input(INPUT_GET,"id",FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         return[
-            "view"=>VIEW_DIR."forum/listPOstsTopic.php",
+            "view"=>VIEW_DIR."forum/listPostsTopic.php",
             "data"=>[
-                "posts"=>$post->findPostsByTopic($id)
+                "posts"=>$post->findPostsByTopic($id),
+                "topic"=>$topic->findOneById($id)
             ] ];
     }
+    public function ajouterPost()
+    {
+        $post=new PostManager();
+        $topic=new TopicManager();
+        $commentaire=filter_input(INPUT_POST,"commentaire",FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $id=filter_input(INPUT_GET,"id",FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $post->add(["texte"=>$commentaire,"user_id"=>1,"topic_id"=>$id]);
+        return[
+            "view"=>VIEW_DIR."forum/listPostsTopic.php",
+            "data"=>[
+                "posts"=>$post->findPostsByTopic($id),
+                "topic"=>$topic->findOneById($id)
+            ] ];
+        
+
+    }
+
 
 }
