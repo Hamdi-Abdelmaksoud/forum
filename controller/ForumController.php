@@ -5,6 +5,7 @@ namespace Controller;
 use App\Session;
 use App\AbstractController;
 use App\ControllerInterface;
+use Model\Entities\Category;
 use Model\Entities\Topic;
 use Model\Managers\TopicManager;
 use Model\Managers\PostManager;
@@ -71,6 +72,18 @@ class ForumController extends AbstractController implements ControllerInterface
             ] ];
         
 
+    }
+    public function listTopicsCategorie()
+    {
+        $topic=new TopicManager();
+        $category= new CategoryManager();
+        $id=filter_input(INPUT_GET,"id",FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        return[
+            "view"=>VIEW_DIR."forum/listTopicsCategorie.php",
+            "data"=>[
+                "topics"=>$category->findCategoryTopics($id),
+                  "category"=>$category->findOneById($id)
+            ] ];
     }
 
 

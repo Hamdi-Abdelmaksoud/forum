@@ -11,7 +11,7 @@ if($categories != Null)
     foreach($categories as $categorie)
     {
         ?>
-        <p><?=$categorie->getNom()?></a></p>
+        <p><a href="index.php?ctrl=forum&action=listTopicsCategorie&id=<?=$categorie->getid()?>"><?=$categorie->getNom()?></a></p>
         <?php
     }
 }
