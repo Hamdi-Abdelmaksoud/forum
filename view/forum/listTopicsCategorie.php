@@ -3,9 +3,11 @@
 $topics = $result['data']['topics'];
 $category=$result['data']['category'];
 ?>
-<p><?= $topic->getTitle() ?></p>
+<h3><?= $category->getNom() ?></h3>
 <?php
-foreach ($posts as $post) { ?>
-    <p><?= $post->getTexte() . ":" . $post->getPostDate() ?></p>
+foreach ($topics as $topic) { ?>
+<ul>
+    <li><?= $topic->getTitle() ?></li>
+    </ul>
 <?php
 }
