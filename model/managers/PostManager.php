@@ -24,8 +24,4 @@ public function findPostsByTopic($id)
         $this->className
     );
  
-}
-
-
-
-    }   
+}}

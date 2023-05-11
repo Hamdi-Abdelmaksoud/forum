@@ -77,12 +77,14 @@ class ForumController extends AbstractController implements ControllerInterface
     {
         $topics=new TopicManager();
         $category= new CategoryManager();
+        $post=new PostManager();
         $id=filter_input(INPUT_GET,"id",FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         return[
             "view"=>VIEW_DIR."forum/listTopicsCategorie.php",
             "data"=>[
                 "topics"=>$topics->findCategoryTopics($id),
-                  "category"=>$category->findOneById($id)
+                  "category"=>$category->findOneById($id),
+                  "firstPost"=>$post->findOneById($id)
             ] ];
     }
 
