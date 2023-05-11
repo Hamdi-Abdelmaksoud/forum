@@ -12,7 +12,7 @@
     <?php
 
     $topics = $result["data"]['topics'];
-    $catgories =$result["data"]['categories'];
+    $catgories = $result["data"]['categories'];
 
     ?>
 
@@ -31,12 +31,11 @@
         <div>
             <input type="text" name="title" id="title" required>
             <select id="category" name="category">
-                <?php foreach($catgories as $catgorie)
-            {?>
-<option value="<?=$catgorie->getId() ?>"><?=$catgorie->getNom() ?></option>
-<?php } ?>
-</select>
-<input type="submit" value="ajouter topic" name="ajouterTopic">
+                <?php foreach ($catgories as $catgorie) { ?>
+                    <option value="<?= $catgorie->getId() ?>"><?= $catgorie->getNom() ?></option>
+                <?php } ?>
+            </select>
+            <input type="submit" value="ajouter topic" name="ajouterTopic">
         </div>
     </form>
 
