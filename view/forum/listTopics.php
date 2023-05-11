@@ -12,6 +12,7 @@
     <?php
 
     $topics = $result["data"]['topics'];
+    $catgories =$result["data"]['categories'];
 
     ?>
 
@@ -24,10 +25,20 @@
         <p><a href="index.php?ctrl=forum&action=listPostsTopic&id=<?= $topic->getId() ?>"><?= $topic->getTitle() ?></a> </p>
     <?php
     }
-
-
-
     ?>
+    <form action="index.php?ctrl=forum&action=ajouterTopic" method="post">
+
+        <div>
+            <input type="text" name="commentaire" id="title" required></textarea>
+            <select id="category" name="category">
+                <?php foreach($catgories as $catgorie)
+            {?>
+<option value="<?=$catgorie->getId() ?>"><?=$catgorie->getNom() ?></option>
+<?php } ?>
+</select>
+<input type="submit" value="ajouter topic" name="ajouterTopic">
+        </div>
+    </form>
 
 </body>
 

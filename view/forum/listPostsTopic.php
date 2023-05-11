@@ -14,7 +14,7 @@ if ($posts != NUll) {
 <form action="index.php?ctrl=forum&action=ajouterPost&id=<?= $_GET["id"] ?>" method="post">
 
     <div>
-        <textarea name="commentaire" id="commentaire" required></textarea>
+        <textarea name="commentaire" id="commentaire" required>
         <input type="submit" value="ajouter commentaire" name="ajouterCom">
     </div>
 </form>

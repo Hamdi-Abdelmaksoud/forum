@@ -5,7 +5,7 @@ namespace Controller;
 use App\Session;
 use App\AbstractController;
 use App\ControllerInterface;
-
+use Model\Entities\Category;
 use Model\Managers\TopicManager;
 use Model\Managers\PostManager;
 use Model\Managers\CategoryManager;
@@ -19,11 +19,13 @@ class ForumController extends AbstractController implements ControllerInterface
 
 
         $topicManager = new TopicManager();
+        $category = new CategoryManager();
 
         return [
             "view" => VIEW_DIR . "forum/listTopics.php",
             "data" => [
-                "topics" => $topicManager->findAll(["publishDate", "DESC"])
+                "topics" => $topicManager->findAll(["publishDate", "DESC"]),
+                "categories" => $category->findAll()
             ]
         ];
     }
@@ -86,5 +88,24 @@ class ForumController extends AbstractController implements ControllerInterface
             ]
         ];
     }
+    public function ajoutCategory()
+    {
+        $categoryManager = new CategoryManager();
+        $categoryName = filter_input(INPUT_POST, "nom", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        if ($categoryManager->trouverCategory($categoryName)) {
+            $_SESSION['message'] = "cette catégroie existe déja";
+        }
+        else{
+            $categoryManager->add(["nom"=>$categoryName]);
 
+        }
+        return [
+            "view" => VIEW_DIR . "forum/listCategories.php",
+            "data" => [
+                "categories" => $categoryManager->findAll()
+                
+                
+                ]
+            ];
+    }
 }

@@ -14,6 +14,11 @@
         public function __construct(){
             parent::connect();
         }
-
+        public function trouverCategory($category)
+        {
+             $sql="select *
+             FROM ".$this->tableName." c WHERE c.nom=:nom";
+             return $this->getOneOrNullResult(DAO::select($sql,['nom'=>$category],false),$this->className);
+        }
 
     }
