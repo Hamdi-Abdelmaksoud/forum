@@ -8,11 +8,14 @@
     <title>Document</title>
 </head>
 <body>
-    <nav>
-
-    </nav>
+   <?php 
+   if(isset($_SESSION['inscription']))
+   {
+    echo"<h1>erreur</h1>";
+   }
+   ?>
     <div id="inscription">
-    <form>
+    <form action="index.php?ctrl=security&action=inscription" method="post">
       <div class="mb-3">
         
         <input type="text" class="form-control" id="nom" name="nom"  placeholder=" --entrez votre nom--">
@@ -34,7 +37,7 @@
     
     <input type="password" class="form-control" id="pasword2"  placeholder=" --tapez une deuxieme fois votre mot de passe--">
     
-    <button type="submit" class="btn btn-primary">inscription</button>
+    <button type="submit" class="btn btn-primary" name="inscription">inscription</button>
   </form>
 </div>
 <div>

@@ -20,7 +20,9 @@
                 DAO::select($sql,['id'=>$id]),
                 $this->className
             );
-         
+         $sqlnbr="select *
+         FROM ".$this->tableName." t WHERE t.category_id=:id";
+         return $this->getOneOrNullResult(DAO::select($sqlnbr,['id'=>$id]),$this->className);
     
           }
 
