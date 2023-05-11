@@ -29,7 +29,7 @@
     <form action="index.php?ctrl=forum&action=ajouterTopic" method="post">
 
         <div>
-            <input type="text" name="commentaire" id="title" required></textarea>
+            <input type="text" name="title" id="title" required>
             <select id="category" name="category">
                 <?php foreach($catgories as $catgorie)
             {?>

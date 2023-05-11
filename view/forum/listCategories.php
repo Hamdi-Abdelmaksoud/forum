@@ -6,9 +6,17 @@ $categories=$result['data']['categories'];
 <div>
 <h3>Categories</h3>
 <?php
-if(isset($_SESSION['message']))
-{
-    echo "<p>".$_SESSION['message']."</p>";
+if(isset($_SESSION['message']))//si la ctégorie existe déja
+{?>
+    <p id="message" style="color:white;width: 200px;background-color:red;"><?=$_SESSION['message']?></p>
+    <script>
+    setTimeout(function() {
+        var message = document.getElementById('message');
+        message.parentNode.removeChild(message);
+    }, 2000); // Supprimer le message après 2 secondes (2000 ms)
+</script>
+<?php
+    unset($_SESSION['message']);
 }
 if($categories != Null)
 {
