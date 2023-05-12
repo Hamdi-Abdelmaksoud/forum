@@ -94,18 +94,37 @@ class ForumController extends AbstractController implements ControllerInterface
         $categoryName = filter_input(INPUT_POST, "nom", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         if ($categoryManager->trouverCategory($categoryName)) {
             $_SESSION['message'] = "cette catégroie existe déja";
-        }
-        else{
-            $categoryManager->add(["nom"=>$categoryName]);
-
+        } else {
+            $categoryManager->add(["nom" => $categoryName]);
         }
         return [
             "view" => VIEW_DIR . "forum/listCategories.php",
             "data" => [
                 "categories" => $categoryManager->findAll()
-                
-                
-                ]
-            ];
+
+
+            ]
+        ];
+    }
+    public function ajouterTopic()
+    {
+        $topicManager = new TopicManager();
+        $categoryManager=new CategoryManager();
+        $title = filter_input(INPUT_POST, "title", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $category = filter_input(INPUT_POST, "category", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $user = 1;
+
+        if ($title && $category && $user) {
+            $topicManager->add(["title" => $title, "category_id" => $category, "user_id" => $user]);
+        }
+        return [
+            "view" => VIEW_DIR . "forum/listTopics.php",
+            "data" => [
+                "topics" => $topicManager->findAll(),
+                "categories" => $categoryManager->findAll()
+
+
+            ]
+        ];
     }
 }
