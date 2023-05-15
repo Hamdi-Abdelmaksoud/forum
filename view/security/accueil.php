@@ -14,8 +14,9 @@
     echo"<h1>erreur</h1>";
    }
    ?>
-    <div id="inscription">
+    <div id="inscription" class="col-6 offset-3 mt-4">
     <form action="index.php?ctrl=security&action=inscription" method="post">
+      <h3 class="text-center text-success mb-3"> Inscription </h3>
       <div class="mb-3">
         
         <input type="text" class="form-control" id="nom" name="nom"  placeholder=" --entrez votre nom--">
@@ -27,28 +28,32 @@
         <input type="text" class="form-control" id="pseudo" name="pseudo" placeholder=" --entrez votre pseudo--" >
       </div>
       <div class="mb-3">
-        <input type="email" class="form-control" id="exampleInputEmail1"  placeholder=" --entrez votre email--">
+        <input type="email" class="form-control" id="exampleInputEmail1" name="email" placeholder=" --entrez votre email--">
       </div>
   <div class="mb-3">
     
-    <input type="password" class="form-control" id="password1"  placeholder=" --entrez votre mot de passe--">
+    <input type="password" class="form-control" id="password1" name="password" placeholder=" --entrez votre mot de passe--">
   </div>
   <div class="mb-3">
     
-    <input type="password" class="form-control" id="pasword2"  placeholder=" --tapez une deuxieme fois votre mot de passe--">
+    <input type="password" class="form-control" id="pasword2" name="password1"  placeholder=" --tapez une deuxieme fois votre mot de passe--">
     
     <button type="submit" class="btn btn-primary" name="inscription">inscription</button>
   </form>
 </div>
 <div>
-  <form>
+  <form action="index.php?ctrl=security&action=connexion" method="post">
   <div class="mb-3">
-    <input type="email" class="form-control" id="exampleInputEmail1"  placeholder=" --entrez votre email--">
+    <input type="email" class="form-control" id="exampleInputEmail1" name="email" placeholder=" --entrez votre email--">
   </div>
   <div class="mb-3">
     
-    <input type="password" class="form-control" id="password1"  placeholder=" --entrez votre mot de passe--">
+    <input type="password" class="form-control" id="password1"  name="password" placeholder=" --entrez votre mot de passe--">
   </div>
+
+      
+  <button type="submit" class="btn btn-primary" name="connexion">Connexion</button>
+
   </form>
 </div>
 
