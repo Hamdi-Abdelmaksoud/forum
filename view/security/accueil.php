@@ -24,7 +24,7 @@
       <div class="mb-3">
         <input type="text" class="form-control" id="prenom" name="prenom"  placeholder=" --entrez votre prenom--">
       </div>
-      <div>
+      <div> 
         <input type="text" class="form-control" id="pseudo" name="pseudo" placeholder=" --entrez votre pseudo--" >
       </div>
       <div class="mb-3">
@@ -42,6 +42,7 @@
   </form>
 </div>
 <div>
+<h3 class="text-center text-success mb-3"> Connexion</h3>
   <form action="index.php?ctrl=security&action=connexion" method="post">
   <div class="mb-3">
     <input type="email" class="form-control" id="exampleInputEmail1" name="email" placeholder=" --entrez votre email--">
