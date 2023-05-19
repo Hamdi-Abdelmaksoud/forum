@@ -3,6 +3,8 @@
 
     class Session{
 
+        // addFlash , getFlash 
+
         private static $categories = ['error', 'success'];
 
         /**

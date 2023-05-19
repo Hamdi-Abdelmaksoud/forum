@@ -8,6 +8,18 @@
 </head>
 <body>
     
-<h1>connected</h1>
+    <h3> Profile Page</h3>
+
+    <?php
+      if(App\Session::getUser()){
+            if(App\Session::getUser()->hasRole("Admin")){ ?>
+
+            <h1> hello admin </h1>
+
+           <?php }
+            else{  ?>
+<h1> hello user </h1>
+          <?php  }
+        } ?>
 </body>
-</html> 
+</html>

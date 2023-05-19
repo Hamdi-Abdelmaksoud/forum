@@ -58,13 +58,32 @@ class ForumController extends AbstractController implements ControllerInterface
             ]
         ];
     }
+
+    public function deletePost()
+    {
+        $session = new Session();
+        $post = new PostManager();
+        $topic = new topicManager();
+        $idt = filter_input(INPUT_GET, "id", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $id = filter_input(INPUT_GET, "idpost", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $post->delete($id);
+        return [
+            "view" => VIEW_DIR . "forum/listPostsTopic.php",
+            "data" => [
+                "posts" => $post->findPostsByTopic($idt),
+                "topic" => $topic->findOneById($idt)
+            ]
+        ];
+    }
+
     public function ajouterPost()
     {
+        $session = new Session();
         $post = new PostManager();
         $topic = new TopicManager();
         $commentaire = filter_input(INPUT_POST, "commentaire", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $post->add(["texte" => $commentaire, "user_id" => 1, "topic_id" => $id]);
+        $post->add(["texte" => $commentaire, "user_id" => $session->getUser()->getId() , "topic_id" => $id]);
         return [
             "view" => VIEW_DIR . "forum/listPostsTopic.php",
             "data" => [

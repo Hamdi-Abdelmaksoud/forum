@@ -1,0 +1,1 @@
+ALTER TABLE topic ALTER COLUMN actif SET DEFAULT 1;topictopictopictopictopictopictopic
