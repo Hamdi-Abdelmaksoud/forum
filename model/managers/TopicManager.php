@@ -25,5 +25,12 @@
          return $this->getOneOrNullResult(DAO::select($sqlnbr,['id'=>$id]),$this->className);
     
           }
+         /* public function findUserTopics($id)
+          {
+            $sql="select $
+            FROM ".$this->tableName." t WHERE t.user_id=:id";
+            return $this->getMultipleResults(DAO::select($sql,['id'=>$id]),
+            $this->className);
+          }*/
 
     }

@@ -20,12 +20,21 @@
 
     <?php
     foreach ($topics as $topic) {
+        if ( $topic->getUser()->getId() === App\Session::getUser()->getId() )
+        {?>
 
-    ?>
-        <p><a href="index.php?ctrl=forum&action=listPostsTopic&id=<?= $topic->getId() ?>"><?= $topic->getTitle() ?></a> </p>
-    <?php
+        <p><a href="index.php?ctrl=forum&action=listPostsTopic&id=<?= $topic->getId()?>"><?= $topic->getTitle() ?></a> </p>
+        <a href="index.php?ctrl=forum&action=deleteTopic&id=<?= $topic->getId() ?>">supprimer</a>
+        <?php
     }
-    ?>
+    else
+    {
+        ?>
+                <p><a href="index.php?ctrl=forum&action=listPostsTopic&id=<?= $topic->getId()?>"><?= $topic->getTitle() ?></a> </p>
+
+    <?php }}?>
+    
+
     <form action="index.php?ctrl=forum&action=ajouterTopic" method="post">
 
         <div>

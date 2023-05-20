@@ -34,7 +34,7 @@
                         
                         if(App\Session::getUser()){
                             ?>
-                            <a href="/security/viewProfile.html"><span class="fas fa-user"></span>&nbsp;<?= App\Session::getUser()->getPseudo()?></a>
+                            <a href="/security/profile.php"><span class="fas fa-user"></span>&nbsp;<?= App\Session::getUser()->getPseudo()?></a>
                             <a href="index.php?ctrl=forum&action=listTopics">la liste des topics</a>
                             <a href="index.php?ctrl=forum&action=listCategories">la liste des categories</a>
                             <a href="index.php?ctrl=security&action=deconnexion">Déconnexion</a>
@@ -44,7 +44,7 @@
                         else{
                             ?>
                             <a href="index.php?ctrl=security&action=inscription">Connexion</a>
-                            <a href="index.php?ctrl=security&action=inscription">Inscription</a>
+                            <a href="index.php?ctrl=security&action=inscription">inscription</a>
                             
                         <?php
                         }

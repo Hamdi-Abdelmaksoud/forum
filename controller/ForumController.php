@@ -146,4 +146,35 @@ class ForumController extends AbstractController implements ControllerInterface
             ]
         ];
     }
+    /*
+    public function deleteTopic()
+    {
+        $session = new Session();
+        $topic = new topicManager();
+        
+        $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        
+        $topic->delete($id);
+        return [
+            "view" => VIEW_DIR . "forum/listTopics.php",
+            "data" => [
+        
+                "topics" => $topic->findAll()
+            ]
+        ];
+    }*/
+/*
+    public function findUserTopics()
+    {
+        $topic = new topicManager();
+
+        $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        return [
+            "view" => VIEW_DIR . "forum/listTopics.php",
+            "data" => [
+               
+                "topic" => $topic->findUserTopics($id)
+            ]
+        ];
+    }*/
 }
