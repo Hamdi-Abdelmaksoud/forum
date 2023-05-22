@@ -20,27 +20,27 @@
 
     <?php
     foreach ($topics as $topic) {
-        if ( $topic->getUser()->getId() === App\Session::getUser()->getId() )
-        {?>
 
-        <p><a href="index.php?ctrl=forum&action=listPostsTopic&id=<?= $topic->getId()?>"><?= $topic->getTitle() ?></a> </p>
-        <a href="index.php?ctrl=forum&action=deleteTopic&id=<?= $topic->getId() ?>">supprimer</a>
-        <?php
+    ?>
+        <p>
+            <a href="index.php?ctrl=forum&action=listPostsTopic&id=<?= $topic->getId() ?>">
+           
+
+            <?= $topic->getTitle() ?>
+            
+        </a>
+         </p>
+    <?php
     }
-    else
-    {
-        ?>
-                <p><a href="index.php?ctrl=forum&action=listPostsTopic&id=<?= $topic->getId()?>"><?= $topic->getTitle() ?></a> </p>
-
-    <?php }}?>
-    
-
+    ?>
     <form action="index.php?ctrl=forum&action=ajouterTopic" method="post">
 
         <div>
             <input type="text" name="title" id="title" required>
             <select id="category" name="category">
                 <?php foreach ($catgories as $catgorie) { ?>
+
+
                     <option value="<?= $catgorie->getId() ?>"><?= $catgorie->getNom() ?></option>
                 <?php } ?>
             </select>

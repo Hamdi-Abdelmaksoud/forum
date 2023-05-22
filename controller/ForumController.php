@@ -18,13 +18,13 @@ class ForumController extends AbstractController implements ControllerInterface
     {
 
 
-        $topicManager = new TopicManager();
+        $TopicManager = new TopicManager();
         $category = new CategoryManager();
 
         return [
             "view" => VIEW_DIR . "forum/listTopics.php",
             "data" => [
-                "topics" => $topicManager->findAll(["publishDate", "DESC"]),
+                "topics" => $TopicManager->findAll(["publishDate", "DESC"]),
                 "categories" => $category->findAll()
             ]
         ];
@@ -47,7 +47,7 @@ class ForumController extends AbstractController implements ControllerInterface
     public function listPostsTopic()
     {
         $post = new PostManager();
-        $topic = new topicManager();
+        $topic = new TopicManager();
 
         $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         return [
@@ -63,7 +63,7 @@ class ForumController extends AbstractController implements ControllerInterface
     {
         $session = new Session();
         $post = new PostManager();
-        $topic = new topicManager();
+        $topic = new TopicManager();
         $idt = filter_input(INPUT_GET, "id", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $id = filter_input(INPUT_GET, "idpost", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $post->delete($id);
@@ -127,33 +127,32 @@ class ForumController extends AbstractController implements ControllerInterface
     }
     public function ajouterTopic()
     {
-        $topicManager = new TopicManager();
+        $TopicManager = new TopicManager();
         $categoryManager=new CategoryManager();
         $title = filter_input(INPUT_POST, "title", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $category = filter_input(INPUT_POST, "category", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $user = 1;
 
         if ($title && $category && $user) {
-            $topicManager->add(["title" => $title, "category_id" => $category, "user_id" => $user]);
+            $TopicManager->add(["title" => $title, "category_id" => $category, "user_id" => $user]);
         }
         return [
             "view" => VIEW_DIR . "forum/listTopics.php",
             "data" => [
-                "topics" => $topicManager->findAll(),
+                "topics" => $TopicManager->findAll(),
                 "categories" => $categoryManager->findAll()
 
 
             ]
         ];
     }
-    /*
+
+    
     public function deleteTopic()
     {
         $session = new Session();
-        $topic = new topicManager();
-        
+        $topic = new TopicManager();
         $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        
         $topic->delete($id);
         return [
             "view" => VIEW_DIR . "forum/listTopics.php",
@@ -162,19 +161,20 @@ class ForumController extends AbstractController implements ControllerInterface
                 "topics" => $topic->findAll()
             ]
         ];
-    }*/
-/*
-    public function findUserTopics()
-    {
-        $topic = new topicManager();
+    }
 
-        $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    // Route : [ index.php?ctrl=forum&action=myTopics ]
+    // respopnse : Page html mes topics
+
+    public function myTopics()
+    {
+        $topic = new TopicManager();
+
         return [
-            "view" => VIEW_DIR . "forum/listTopics.php",
+            "view" => VIEW_DIR . "forum/myTopics.php",
             "data" => [
-               
-                "topic" => $topic->findUserTopics($id)
+                "topics" => $topic->findUserTopics(Session::getUser()->getId())
             ]
         ];
-    }*/
+    }
 }
