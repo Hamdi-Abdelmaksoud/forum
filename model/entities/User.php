@@ -139,12 +139,7 @@
 
 
         public function hasRole($role){
-                // if ( $role === $this->getRole()  ){
-                //                 return true; 
-                // }else{
-                //         return false;
-                // }
-
+            
                  return $role === $this->getRole() ? true : false; // ternory operator
         }
     }

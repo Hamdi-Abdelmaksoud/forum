@@ -146,5 +146,75 @@ use Model\Managers\UserManager;
     }
 
 
+ 
+    public function showEditPasswordForm(){
+        return[
+            "view" => VIEW_DIR . "security/editPassword.php"
+        ];
+    }
+    public function editPassword(){
+      
+        $userManager = new userManager();
+        $topicManager = new TopicManager();
+        $postManager = new PostManager();
+        $session = new Session();
+ 
+        if(isset($_POST["btn_edit"])){ // button cliquer
+            
+           
+            $old_pass = filter_input(INPUT_POST, "old_pass", FILTER_SANITIZE_EMAIL);
+            $new_pass = filter_input(INPUT_POST, "new_pass", FILTER_SANITIZE_SPECIAL_CHARS);
+            $confirm_pass = filter_input(INPUT_POST, "confirm_pass", FILTER_SANITIZE_SPECIAL_CHARS);
+
+            
+            if($old_pass && $new_pass && $confirm_pass){
+
+                // get password connected user
+
+                $passwordConnectedUser = $userManager->getUserPassword(Session::getUser()->getId())->getPassword();
+                // Comparaison anc pass , current pass
+
+                if (  password_verify( $old_pass,$passwordConnectedUser ) ){
+                    // comparaison new , confirm
+
+                    if ($new_pass  == $confirm_pass){
+                        // modification de mot passe
+                        // hashage mot de passe
+                        $hash_pass = password_hash($new_pass,PASSWORD_DEFAULT);
+
+                        // update password
+                        $userManager->updatePassword($hash_pass);
+                        $session->addFlash("success","Mot de passe modifie avec succes");
+                        $this->redirectTo("security", "showEditPasswordForm");
+
+                    }else{
+                        $session->addFlash("error","le 2 mots de passe ne sont pas identiques");
+                    $this->redirectTo("security", "showEditPasswordForm");
+                    }
+                   
+
+                }else{
+                    $session->addFlash("error","Ancienne mot de passe errone");
+                    $this->redirectTo("security", "showEditPasswordForm");
+                }
+
+
+               
+                return[
+                    "view" => VIEW_DIR . "security/editPassword.php"
+                ];
+            }
+          
+        }
+        else{
+            $session->addFlash("error", "Échec de la modification du mot de passe !");
+            $this->redirectTo("security", "showEditPasswordForm");
+        }
+    }
+
+
 
  }
+
+
+ 

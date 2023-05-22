@@ -8,10 +8,18 @@
 </head>
 <body>
     
-<a href="/security/profile.php"><span class="fas fa-user"></span>&nbsp;<?= App\Session::getUser()->getPseudo()?></a>
-                            <a href="index.php?ctrl=forum&action=listTopics">la liste des topics</a>
-                            <a href="index.php?ctrl=forum&action=listCategories">la liste des categories</a>
-                            <a href="index.php?ctrl=security&action=deconnexion">Déconnexion</a>
-<a href="index.php?ctrl=forum&action=findUserTopics&id=<?=$session->getUser()->getId()?>">mes topics</a>
+    <h3> Profile Page</h3>
+
+    <?php
+      if(App\Session::getUser()){
+            if(App\Session::getUser()->hasRole("Admin")){ ?>
+
+            <h1> hello admin </h1>
+
+           <?php }
+            else{  ?>
+                  <h1> hello user </h1>
+          <?php  }
+        } ?>
 </body>
-</html> 
+</html>

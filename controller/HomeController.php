@@ -12,6 +12,23 @@ use Model\Managers\PostManager;
 class HomeController extends AbstractController implements ControllerInterface
 {
 
+
+    public function profile(){
+        // MiddleWares [ GUARDS ]
+        if (Session::getUser()){ // user already connected
+   
+            return [
+                "view" => VIEW_DIR . "security/profile.php"
+            ];
+        }
+   
+        return [
+            "view" => VIEW_DIR . "home.php"
+        ];
+     
+
+    }
+
     public function index()
     {
 
@@ -20,7 +37,6 @@ class HomeController extends AbstractController implements ControllerInterface
             "view" => VIEW_DIR . "home.php"
         ];
     }
-
 
 
     public function users()
