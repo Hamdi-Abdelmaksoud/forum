@@ -9,16 +9,20 @@
 </head>
 
 <body>
-   <h1>list des topics</h1>
+    <h1>list des topics</h1>
 
-   <?php $topics = $result["data"]["topics"]; ?>
+    <?php $topics = $result["data"]["topics"]; ?>
 
-   <?php 
-        foreach($topics as $topic){ ?>
+    <?php
+    foreach ($topics as $topic) { ?>
+        <p>
+            <a href="index.php?ctrl=forum&action=listPostsTopic&id=<?= $topic->getId() ?>"><?= $topic->getTitle() ?></a>
+           <!-- <a href="index.php?ctrl=forum&action=deleteTopic&id=<?= $topic->getId() ?>">supprimer</a> -->
+        </p>
 
-     <?php   }
-   
-   ?>
+    <?php   }
+
+    ?>
 
 
 

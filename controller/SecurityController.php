@@ -18,6 +18,7 @@ use Model\Managers\UserManager;
      public function inscription()
      {
          $user = new UserManager(); // new instance [ UserManager ]
+         $session=new Session();
          
          
          if(isset($_POST["inscription"])) // GET , POST ( POST ) login.php [$_POST]
@@ -43,29 +44,29 @@ use Model\Managers\UserManager;
                                  "password"=>$motDePasse,
                                  "role"=>"User"]))
                                  {
-                                     $session['inscription']="inscrition réussite";
+                                    $session->addFlash("success","inscription réussite ");
                                     }
                                     else
                                     {
-                                      $session['inscription']="erreur d'inscription";
+                                        $session->addFlash("error","probléme d'inscription");
                                     }/*fin id user->add */
                                     
                         }
                         else
                         {
-                                    $session['message']="les mots de passes ne sont pas identiques";
+                            $session->addFlash("error","les mots de passe ne sont pas identiques");
                                     return [
                                         "view" => VIEW_DIR . "security/accueil.php",];
                         }/*fin mot de passe identique*/
                     }
                     else
                     {
-                        $session['message']="pseudo existe déja";
+                        $session->addFlash("error","pseudo déja utilisé");
                     }/*fin pseudo*/
         }
         else
         {
-            $session['message']="pseudo email déja";
+            $session->addFlash("error","email déja utilisé");
         }/*fin id user->add */
     }
     }/*fin if */
@@ -103,24 +104,21 @@ use Model\Managers\UserManager;
                            // user sauvgarder session
                            $session->setUser($user);
 
-
+                           $session->addFlash("success", "Connexion réussi ! Bienvenue " . Session::getUser()->getPseudo());
                             return ["view" => VIEW_DIR . "security/profile.php",];
-                     }else{ // password ghalta
-                        //die("n'existe pas password ghalta");
-                        $session['message'] = "Password Invalid";
+                     }else{ 
+                        $session->addFlash("error","le mot de passe n'est pas bon !");
                         return ["view" => VIEW_DIR . "security/accueil.php",];
                      }
                    
 
-                }else{ // User NUll email ghalet 
-                    // user n'existe pas ( wrong credentials )
-                    //die("n'existe pas email ghalet");
-                    $session['message'] = "Email Invalid";
+                }else{ 
+                    $session->addFlash("error","cet email n'existe pas !");
                     return ["view" => VIEW_DIR . "security/accueil.php",];
                 }
 
             }else{
-                $session['message'] = "les input invalide";
+                $session->addFlash("error","les inputs invalides ");
                 return ["view" => VIEW_DIR . "security/accueil.php",];
             }
 

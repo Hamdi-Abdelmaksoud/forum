@@ -37,9 +37,9 @@
                             <a href="index.php?ctrl=home&action=profile">
                                 <span class="fas fa-user"></span>&nbsp;<?= App\Session::getUser()->getPseudo()?></a>
                             <a href="index.php?ctrl=forum&action=listTopics">la liste des topics</a>
-                            <a href="index.php?ctrl=forum&action=listTopics">mes topics</a>
                             <a href="index.php?ctrl=forum&action=listCategories">la liste des categories</a>
                             <a href="index.php?ctrl=security&action=deconnexion">Déconnexion</a>
+                         
 
                             <?php
                         }
