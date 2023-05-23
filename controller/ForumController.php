@@ -83,7 +83,7 @@ class ForumController extends AbstractController implements ControllerInterface
         $topic = new TopicManager();
         $commentaire = filter_input(INPUT_POST, "commentaire", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $post->add(["texte" => $commentaire, "user_id" => $session->getUser()->getId() , "topic_id" => $id]);
+        $post->add(["texte" => $commentaire, "user_id" => $session->getUser()->getId(), "topic_id" => $id]);
         return [
             "view" => VIEW_DIR . "forum/listPostsTopic.php",
             "data" => [
@@ -128,7 +128,7 @@ class ForumController extends AbstractController implements ControllerInterface
     public function ajouterTopic()
     {
         $TopicManager = new TopicManager();
-        $categoryManager=new CategoryManager();
+        $categoryManager = new CategoryManager();
         $title = filter_input(INPUT_POST, "title", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $category = filter_input(INPUT_POST, "category", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $user = 1;
@@ -147,7 +147,7 @@ class ForumController extends AbstractController implements ControllerInterface
         ];
     }
 
-    
+
     public function deleteTopic()
     {
         $session = new Session();
@@ -157,7 +157,7 @@ class ForumController extends AbstractController implements ControllerInterface
         return [
             "view" => VIEW_DIR . "forum/listTopics.php",
             "data" => [
-        
+
                 "topics" => $topic->findAll()
             ]
         ];

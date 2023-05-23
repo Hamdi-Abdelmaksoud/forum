@@ -19,7 +19,7 @@
            <?php }
             else{  ?>
                   <h1> hello user </h1>
-                  <a href="index.php?ctrl=forum&action=listTopics">mes topics</a>
+                  <a href="index.php?ctrl=forum&action=myTopics">mes topics</a>
           <?php  }
         } ?>
 </body>
