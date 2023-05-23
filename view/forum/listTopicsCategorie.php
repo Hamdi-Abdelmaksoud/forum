@@ -11,15 +11,15 @@ if ($topics == null)
     echo "pas de topic dans cette catégorie";
  }
   else 
-  {
-    foreach ($topics as $topic) { ?>
-        <ul>
-            <li><a href="index.php?ctrl=forum&action=listPostsTopic&id=<?= $topic->getId() ?>"><?= $topic->getTitle() ?></li>
-            <?php if($post !=Null){?>
-            <ul><li><?=$post->getTexte()?></li></ul>
+  {?>
+      <ul>
+    <?php foreach ($topics as $topic) { ?>
+            <li><a href="index.php?ctrl=forum&action=listPostsTopic&id=<?= $topic->getId() ?>"><?= $topic->getTitle()?></a>
+            <?=$topic->getUser()->getPseudo() ?></li>
+            
             <?php } ?>
 
         </ul>
 <?php
     }
-} ?>
+ ?>

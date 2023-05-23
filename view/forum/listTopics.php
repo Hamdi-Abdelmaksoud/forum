@@ -24,12 +24,14 @@
     ?>
         <p>
             <a href="index.php?ctrl=forum&action=listPostsTopic&id=<?= $topic->getId() ?>">
-           
 
-            <?= $topic->getTitle() ?>
-            
-        </a>
-         </p>
+
+                <?= $topic->getTitle() . "**" . $topic->getUser()->getPseudo() ?>
+
+            </a>
+        </p>
+
+
     <?php
     }
     ?>

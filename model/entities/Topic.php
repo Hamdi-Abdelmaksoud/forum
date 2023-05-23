@@ -94,7 +94,7 @@
         {
                 $this->closed = $closed;
 
-                return $this;
+                 return $this;
         }
 
         /**

@@ -20,6 +20,7 @@
             else{  ?>
                   <h1> hello user </h1>
                   <a href="index.php?ctrl=forum&action=myTopics">mes topics</a>
+                  <a href="index.php?ctrl=security&action=showEditPasswordForm">éditer mon mot de passe</a>
           <?php  }
         } ?>
 </body>

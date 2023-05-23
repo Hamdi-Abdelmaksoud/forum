@@ -163,6 +163,7 @@ class ForumController extends AbstractController implements ControllerInterface
         ];
     }
 
+
     // Route : [ index.php?ctrl=forum&action=myTopics ]
     // respopnse : Page html mes topics
 
@@ -176,5 +177,21 @@ class ForumController extends AbstractController implements ControllerInterface
                 "topics" => $topic->findUserTopics(Session::getUser()->getId())
             ]
         ];
+    }
+    public function veroullierTopic($id)
+    {
+        $topicManager = new TopicManager();
+        //$id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_FULL_SPECIAL_CHARS); 
+        $topicManager->verouillerTopic($id);
+
+        $this->redirectTo("forum", "listPostsTopic", $id);
+    }
+    public function ouvrirTopic($id)
+    {
+        $topicManager = new TopicManager();
+        //$id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_FULL_SPECIAL_CHARS); 
+        $topicManager->ouvrirTopic($id);
+
+        $this->redirectTo("forum", "listPostsTopic", $id);
     }
 }
