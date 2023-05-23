@@ -131,9 +131,9 @@ class ForumController extends AbstractController implements ControllerInterface
         $categoryManager = new CategoryManager();
         $title = filter_input(INPUT_POST, "title", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $category = filter_input(INPUT_POST, "category", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $user = 1;
+        $user = Session::getUser()->getId();
 
-        if ($title && $category && $user) {
+        if ($title && $category ) {
             $TopicManager->add(["title" => $title, "category_id" => $category, "user_id" => $user]);
         }
         return [

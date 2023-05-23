@@ -29,8 +29,9 @@
 
         public function findUserTopics($id)
           {
+            // var_dump($id);die;
             $sql="select * FROM ".$this->tableName." t WHERE t.user_id=:id";
-            return $this->getMultipleResults(DAO::select($sql,['id'=>$id]),$this->tableName);
+            return $this->getMultipleResults(DAO::select($sql,['id'=>$id]),$this->className);
         }
 
     }
